@@ -1,0 +1,17 @@
+<div class="card">
+	<div class="card-body">
+		<div class="card-title">
+			<h3>{{product.Titre}}</h3>
+		</div>
+		<div class="list-group" style="display:flex">
+			<div class="list-group-item">
+				<img src="{{product.Image}}" style="width:200px">
+			</div>
+			<div class="list-group-item" style="border:2px solid black, border-radius: 30px">
+				<p>{{product.resume}}</p>
+				<p>{{product.duree | date("HH:mm")}}</p>
+				<p>{{product.premiereDiffusion | date("d/m/Y")}}</p>
+			</div>
+		</div>
+	</div>
+</div>
