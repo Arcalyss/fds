@@ -3,11 +3,15 @@
 {% block title %}série{% endblock %}
 {% block body %}
 <h1>vos {{nbSeries}} series favori</h1>
-<div class="container overflow-hidden text-center">
-  <div class="row gy-5">
-    <div class="col-6">
+
+<div class="container text-center">
+  <div class="row">
+    <div class="col" style="
+    display: flex;
+    flex-wrap: wrap;
+">
       {% for serie in LesSeries %}
-      <div class="p-3 border bg-light">
+      <div class="p-3 border bg-light" style="display: flex;flex-flow: ;width: 400px;margin: auto;margin-top: 10px;">
         <div class="card-body">
           <img src={{serie.image}} class="d-block w-100" >
           <h1> {{ serie.titre }} </h1>
