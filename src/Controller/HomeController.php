@@ -46,4 +46,13 @@ class HomeController extends AbstractController
         ]);
     }
 
+    #[Route('product/{id}', name: 'app_oneProduct')]
+    public function  show($id, ManagerRegistry $doctrine){
+        $repository = $doctrine->getRepository(Product::class);
+        $product = $repository->find($id);
+        $product = $repository->findOneBy(['name' => 'Keyboard']);
+        $product = $repository->findOneBy(['name' => 'Keyboard','price' => 1999,]);
+    }
+
+
 }

@@ -1,0 +1,23 @@
+{% extends 'base.html.twig' %}
+
+{% block title %}detail
+	{{serie.titre}}
+{% endblock %}
+{% block body %}
+	<div class="row" style="display:flex; flex-wrap: nowrap !important">
+		<div class="col-md-4">
+			<img src={{serie.image}} style="width:300px">
+		</div>
+		<div class="card-body">
+			<h1>
+				{{ serie.titre }}
+			</h1>
+			<p>
+				{{ serie.premiereDiffusion| date("d/m/y") }}
+			</p>
+			<p>
+				{{ serie.resume }}
+			</p>
+		</div>
+	</div>
+{% endblock %}
