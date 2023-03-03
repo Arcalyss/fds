@@ -1,0 +1,42 @@
+{% extends 'base.html.twig' %}
+
+{% block title %}admin serie
+{% endblock %}
+{% block body %}
+	<h1>vos
+		{{LesSeries|length}}
+		series favori:</h1>
+
+	<div class="container text-center">
+		<div class="row">
+			<div class="col" style="
+					    display: flex;
+					    flex-wrap: wrap;
+					">
+				{% for serie in LesSeries %}
+					<div class="p-3 border bg-light" style="display: flex;flex-flow: ;width: 200px;margin: auto;margin-top: 10px; border-radius: 20px;">
+						<div class="card-body">
+							<a href="/serie/{{serie.id}}">
+								<img src={{serie.image}} class="d-block w-100">
+							</a>
+							<h5 style="text-decoration: underline" ;>
+								{{ serie.titre }}
+							</h5>
+							<h5>
+								id serie:
+								{{ serie.id }}
+							</h5>
+							<!--  <a href="{{path('deleteSeries',{"id": serie.id, 'token':csrf_token("delete_serie")}) }}" class="btn btn-primary">supprimer</a> -->
+
+							<form method="POST" action="{{path('deleteSeries',{"id": serie.id}) }}">
+                                <input type="hidden" name="method" value="DELETE">
+								<input type="hidden" name="token" value="{{csrf_token('delete_serie')}}">
+								<button class="btn btn-danger">supprimer</button>
+							</form>
+						</div>
+					</div>
+				{% endfor %}
+			</div>
+		</div>
+	</div>
+{% endblock %}
