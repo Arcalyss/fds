@@ -25,7 +25,7 @@ class SerieType extends AbstractType
                 "class"=>Genre::class,
                 "choice_label"=>"libelle",
                 "multiple"=>true,
-                "expanded"=>true
+                //"expanded"=>true
             )
             )
         ;

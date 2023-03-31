@@ -1,27 +1,52 @@
 {% extends 'base.html.twig' %}
 
-{% block title %}série{% endblock %}
-{% block body %}
-<h1>vos {{LesSeries|length}} series favori</h1>
-
-<div class="container text-center">
-  <div class="row">
-    <div class="col" style="
-    display: flex;
-    flex-wrap: wrap;
-">
-      {% for serie in LesSeries %}
-      <div class="p-3 border bg-light" style="display: flex;flex-flow: ;width: 400px;margin: auto;margin-top: 10px; border-radius: 20px;">
-        <div class="card-body">
-          <a href="/serie/{{serie.id}}"> <img src={{serie.image}} class="d-block w-100" > </a>
-          <h1> {{ serie.titre }} </h1>
-          <p> {{ serie.premiereDiffusion| date("d/m/y") }} </p>
-          <p> {{ serie.resume }} </p>
-          <a href="/serie/{{serie.id}}" class="btn btn-primary">plus d'info</a>
-        </div>
-      </div>
-      {% endfor %}
-    </div>
-  </div>
-</div>
+{% block title %}série
 {% endblock %}
+{% block body %}
+	<h1>vos
+		{{LesSeries|length}}
+		series favori</h1>
+
+	<div class="container text-center">
+		<div class="row">
+			<div class="col" style="
+					    display: flex;
+					    flex-wrap: wrap;
+					">
+				{% for serie in LesSeries %}
+					<div class="p-3 border bg-light" style="display: flex;flex-flow: ;width: 400px;margin: auto;margin-top: 10px; border-radius: 20px;">
+						<div class="card-body">
+							<a href="/serie/{{serie.id}}">
+								<img src={{serie.image}} class="d-block w-100">
+							</a>
+							<h1>
+								{{ serie.titre }}
+							</h1>
+							<p>
+								{{ serie.premiereDiffusion| date("d/m/y") }}
+							</p>
+							<p>
+								{{ serie.resume }}
+							</p>
+							<a href="/serie/{{serie.id}}" class="btn btn-primary">plus d'info</a>
+							<a href="{{path('app_serie_id_like',{id : serie.id})}}" class="js-a-likes">
+								<span class="js-nb-likes">
+									{{ serie.likes }}
+								</span>
+								<span>j'aime
+								</span>
+							</a>
+						</div>
+					</div>
+				{% endfor %}
+			</div>
+		</div>
+	</div>
+{% endblock %}
+{% block javascripts %}
+            <script src="{{asset('js/like.js')}}"></script>
+        {% endblock %}
+
+        {% block stylesheets %}
+            <link href="https://cdn.jsdelivr.net/npm/tom-select@2.2.2/dist/css/tom-select.css" rel="stylesheet">
+        {% endblock %}
